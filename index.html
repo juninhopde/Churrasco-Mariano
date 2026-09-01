@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111111" />
+
+    <!-- ===== SEO — EDITAR conforme o nome definitivo e a URL final ===== -->
+    <title>Buffet de Churrasco em Domicílio | Mariano Churrasco a Domicílio</title>
+    <meta
+      name="description"
+      content="Buffet de churrasco em domicílio, eventos e empresas em Bragança Paulista e região. 5 anos de experiência, carnes selecionadas e serviço completo. Orçamento pelo WhatsApp."
+    />
+    <link rel="canonical" href="https://SEU-USUARIO.github.io/mariano-churrasco/" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="Buffet de Churrasco em Domicílio | Mariano Churrasco" />
+    <meta
+      property="og:description"
+      content="Churrasco artesanal em domicílio e empresas. Levamos carne, estrutura e equipe. Orçamento pelo WhatsApp."
+    />
+    <meta property="og:url" content="https://SEU-USUARIO.github.io/mariano-churrasco/" />
+    <!-- EDITAR: gere uma imagem 1200x630 e salve em public/og.jpg -->
+    <meta property="og:image" content="./og.jpg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Buffet de Churrasco em Domicílio | Mariano Churrasco" />
+    <meta
+      name="twitter:description"
+      content="Churrasco artesanal em domicílio e empresas. Orçamento pelo WhatsApp."
+    />
+    <meta name="twitter:image" content="./og.jpg" />
+
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      ===== DADOS ESTRUTURADOS (Schema.org) =====
+      Preencha telephone, address e priceRange com os dados reais.
+      NÃO adicione aggregateRating sem avaliações reais — o Google penaliza.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FoodEstablishment",
+        "additionalType": "https://schema.org/LocalBusiness",
+        "name": "Mariano Churrasco a Domicílio",
+        "description": "Buffet de churrasco em domicílio, eventos e empresas.",
+        "servesCuisine": "Churrasco",
+        "telephone": "+5511973829765",
+        "url": "https://SEU-USUARIO.github.io/mariano-churrasco/",
+        "priceRange": "$$",
+        "areaServed": {
+          "@type": "GeoCircle",
+          "description": "Bragança Paulista e região",
+          "geoMidpoint": { "@type": "GeoCoordinates", "addressCountry": "BR" }
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bragança Paulista",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        },
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Buffet de churrasco em domicílio",
+              "serviceType": "Buffet de churrasco"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Churrasco para eventos corporativos",
+              "serviceType": "Buffet corporativo"
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

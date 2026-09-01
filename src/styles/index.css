@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-white font-sans text-carvao antialiased;
+    /* trava qualquer rolagem horizontal acidental */
+    overflow-x: hidden;
+  }
+
+  /* foco visível em tudo que é navegável por teclado */
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-dourado;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+@layer utilities {
+  /* esconde a barra de rolagem dos carrosséis sem tirar a função */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
