@@ -15,7 +15,7 @@ export const businessConfig = {
   city: 'Bragança Paulista',
   state: 'SP',
 
-  instagram: '', // ex.: 'https://instagram.com/seuperfil' — vazio esconde o ícone
+  instagram: 'https://instagram.com/marianodasilveira', // ex.: 'https://instagram.com/seuperfil' — vazio esconde o ícone
   facebook: '',
 
   /** EDITAR quando tiver. CNPJ visível é um dos maiores sinais de confiança do nicho. */
