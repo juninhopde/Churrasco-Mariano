@@ -95,11 +95,6 @@ export const photos = {
     alt: 'Picanha assando na grelha com brasa alta',
     credit: 'Loija Nguyen / Unsplash',
   },
-  espetosNaGrelha: {
-    id: 'photo-1546833998-877b37c2e5c6',
-    alt: 'Carne assada servida em tábua de madeira rústica',
-    credit: 'Sven Brandsma / Unsplash',
-  },
   churrasqueiroServindo: {
     id: '',
     alt: 'Mariano — Churrasco do Mariano, Mestre do Fogo',
