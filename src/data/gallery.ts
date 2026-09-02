@@ -20,6 +20,5 @@ export const galleryImages: GalleryImage[] = [
   { id: 'g4', photo: photos.cortandoNaTabua, span: 'small' },
   { id: 'g5', photo: photos.mesaServida, span: 'wide' },
   { id: 'g6', photo: photos.bifeNoFogo, span: 'small' },
-  { id: 'g7', photo: photos.espetosNaGrelha, span: 'small' },
-  { id: 'g8', photo: photos.picanhaNaBrasa, span: 'wide' },
+  { id: 'g7', photo: photos.picanhaNaBrasa, span: 'wide' },
 ];
