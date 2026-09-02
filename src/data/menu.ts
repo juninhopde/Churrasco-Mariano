@@ -34,8 +34,8 @@ export const menuCategories: MenuCategory[] = [
     id: 'acompanhamentos',
     title: 'Acompanhamentos',
     items: [
-      'Farofa artesanal', 'Arroz', 'Arroz biro-biro', 'Pão de alho',
-      'Queijo coalho', 'Vegetais na brasa', 'Maionese artesanal', 'Molhos especiais',
+      'Farofa artesanal', 'Arroz', 'Arroz com Bacon e Cenoura', 'Pão de alho',
+      'Queijo coalho', 'Vegetais na brasa', 'Maionese artesanal',
     ],
     photo: photos.mesaServida,
   },
