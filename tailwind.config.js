@@ -9,6 +9,7 @@ export default {
         madeira: '#5A3825',
         fogo: '#A83220',
         dourado: '#C58B3A',
+        brasa: '#F28C28', // laranja de brasa viva — faíscas e destaques alegres
         creme: '#F4EBDD',
         zap: '#1DA851',
         'zap-dark': '#17853F',
@@ -17,6 +18,10 @@ export default {
         display: ['"Playfair Display"', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
+      // Valores fora da escala padrão do Tailwind (0,5,10,15…). Sem isto, classes como
+      // bg-carvao/98 (fundo do menu mobile), bg-carvao/72 (escurecimento do hero) e
+      // bg-black/92 (galeria ampliada) simplesmente não geram CSS.
+      opacity: { 12: '0.12', 72: '0.72', 92: '0.92', 98: '0.98' },
       maxWidth: { content: '1200px' },
       keyframes: {
         'fade-up': {

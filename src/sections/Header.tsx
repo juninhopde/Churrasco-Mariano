@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { Menu } from 'lucide-react';
 import { businessConfig } from '../config/business';
 import { navItems } from '../data/nav';
-import { buildWhatsAppUrl } from '../utils/whatsapp';
+import { goToQuote } from '../utils/scroll';
 import { useScrolled } from '../hooks/useScrolled';
 import { MobileMenu } from '../components/MobileMenu';
-import { WhatsAppIcon } from '../components/WhatsAppIcon';
 
 export const Header = () => {
   const scrolled = useScrolled(40);
@@ -18,9 +17,9 @@ export const Header = () => {
           scrolled ? 'bg-carvao/95 py-2 shadow-lg shadow-black/25 backdrop-blur' : 'bg-gradient-to-b from-black/70 to-transparent py-4'
         }`}
       >
-        <div className="mx-auto flex w-full max-w-content items-center justify-between gap-4 px-5 sm:px-8">
+        <div className="mx-auto flex w-full max-w-content items-center justify-between gap-2 px-4 sm:gap-4 sm:px-8">
           <a href="#inicio" className="leading-tight">
-            <span className="block font-display text-lg text-creme sm:text-xl">{businessConfig.shortName}</span>
+            <span className="block font-display text-base text-creme sm:text-xl">{businessConfig.shortName}</span>
             <span className="hidden text-[11px] uppercase tracking-[0.18em] text-dourado sm:block">
               Buffet de churrasco
             </span>
@@ -43,14 +42,15 @@ export const Header = () => {
 
           <div className="flex items-center gap-2">
             <a
-              href={buildWhatsAppUrl('Olá! Gostaria de um orçamento de churrasco.')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded bg-zap px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zap-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dourado"
+              href="#orcamento"
+              onClick={(e) => {
+                e.preventDefault();
+                goToQuote();
+              }}
+              className="inline-flex min-h-[2.75rem] items-center whitespace-nowrap rounded-md bg-fogo px-3 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#8c2818] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dourado sm:px-4"
             >
-              <WhatsAppIcon className="h-4 w-4" />
-              <span className="hidden sm:inline">Pedir orçamento</span>
               <span className="sm:hidden">Orçamento</span>
+              <span className="hidden sm:inline">Pedir orçamento</span>
             </a>
 
             <button
@@ -58,7 +58,7 @@ export const Header = () => {
               onClick={() => setMenuOpen(true)}
               aria-label="Abrir menu"
               aria-expanded={menuOpen}
-              className="rounded p-2 text-creme transition-colors hover:text-dourado focus-visible:outline focus-visible:outline-2 focus-visible:outline-dourado lg:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded text-creme transition-colors hover:text-dourado focus-visible:outline focus-visible:outline-2 focus-visible:outline-dourado lg:hidden"
             >
               <Menu className="h-6 w-6" aria-hidden="true" />
             </button>

@@ -22,13 +22,13 @@ export const menuCategories: MenuCategory[] = [
     id: 'suinas',
     title: 'Carnes suínas',
     items: ['Pernil', 'Lombo', 'Panceta', 'Linguiças'],
-    photo: photos.pegadorNaBrasa,
+    photo: photos.eventoLinguicaFaca,
   },
   {
     id: 'frango',
     title: 'Frango',
     items: ['Filé de coxa', 'Meio da asa', 'Coxinha da asa'],
-    photo: photos.grelhaCheia,
+    photo: photos.eventoChurrasqueira,
   },
   {
     id: 'acompanhamentos',
@@ -37,25 +37,30 @@ export const menuCategories: MenuCategory[] = [
       'Farofa artesanal', 'Arroz', 'Arroz com Bacon e Cenoura', 'Pão de alho',
       'Queijo coalho', 'Vegetais na brasa', 'Maionese artesanal',
     ],
-    photo: photos.mesaServida,
+    photo: photos.eventoBuffet,
   },
   {
     id: 'saladas',
     title: 'Saladas',
     items: ['Caprese', 'Salada verde', 'Salpicão', 'Salada de batata', 'Rúcula', 'Tomate seco'],
-    photo: photos.costelaEAcompanhamentos,
+    photo: photos.eventoSaladas,
   },
 ];
 
+/**
+ * Os dois serviços, exibidos nos cards da seção "Serviços".
+ * `id` é o mesmo valor usado no formulário — escolher o card já preenche o serviço lá.
+ */
 export interface ServiceOption {
   id: 'churrasqueiro' | 'buffet';
   title: string;
   tagline: string;
   description: string;
+  /** Principais itens inclusos (mantenha curto — são só os destaques). */
   includes: string[];
-  notIncludes?: string[];
+  /** O que fica por conta do cliente. */
+  notIncludes: string[];
   photo: Photo;
-  ctaMessage: string;
 }
 
 export const serviceOptions: ServiceOption[] = [
@@ -63,38 +68,28 @@ export const serviceOptions: ServiceOption[] = [
     id: 'churrasqueiro',
     title: 'Churrasqueiro',
     tagline: 'O mais pedido',
-    description: 'Você compra a carne, eu asso. Levo faca, tábua, tempero e a experiência de quem faz isso todo dia.',
+    description: 'Você compra as carnes e eu cuido do preparo e do churrasco.',
     includes: [
       'Churrasqueiro profissional por até 5 horas',
       'Tempero e preparo de todos os cortes',
       'Carne servida na mesa principal, sem intervalo',
       'Ajudante necessário acima de 30 convidados',
-      'Área da churrasqueira deixada organizada',
     ],
-    notIncludes: [
-      'Carne e acompanhamentos (você compra)',
-      'Churrasqueira (usa a do local)',
-    ],
+    notIncludes: ['Carnes e acompanhamentos', 'Churrasqueira (usa a do local)'],
     photo: photos.churrasqueiroServindo,
-    ctaMessage: 'Quero orçamento do serviço de churrasqueiro.',
   },
   {
     id: 'buffet',
     title: 'Buffet completo',
     tagline: 'Você só recebe',
-    description: 'A gente leva carne, acompanhamentos, tempero e equipe. Você não sai da festa.',
+    description: 'A equipe cuida das carnes, acompanhamentos e serviço do buffet.',
     includes: [
       'Carnes bovinas, suínas e frango (você escolhe os cortes)',
       'Acompanhamentos e saladas',
       'Equipe uniformizada servindo na mesa principal',
       'Descartáveis de boa qualidade',
-      'Área da churrasqueira deixada organizada',
     ],
-    notIncludes: [
-      'Churrasqueira (usa a do local)',
-      'Bebidas (ficam por sua conta)',
-    ],
-    photo: photos.buffetMontado,
-    ctaMessage: 'Quero orçamento do buffet completo.',
+    notIncludes: ['Churrasqueira (usa a do local)', 'Bebidas'],
+    photo: photos.eventoEquipeTabua,
   },
 ];

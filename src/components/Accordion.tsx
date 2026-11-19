@@ -7,7 +7,8 @@ interface AccordionProps {
 }
 
 export const Accordion = ({ items }: AccordionProps) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  // Tudo fechado de início: a lista fica curta e o cliente abre só o que interessa.
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <div className="divide-y divide-carvao/12 border-y border-carvao/12">

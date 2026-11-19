@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { MouseEvent, ReactNode } from 'react';
 
 type Variant = 'fogo' | 'zap' | 'outline' | 'outlineLight' | 'dourado';
 
@@ -10,6 +10,8 @@ interface CTAButtonProps {
   size?: 'md' | 'lg';
   className?: string;
   ariaLabel?: string;
+  /** Para links internos que precisam de comportamento extra (ex.: focar o formulário). */
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
 
 const variants: Record<Variant, string> = {
@@ -28,12 +30,14 @@ export const CTAButton = ({
   size = 'md',
   className = '',
   ariaLabel,
+  onClick,
 }: CTAButtonProps) => (
   <a
     href={href}
     aria-label={ariaLabel}
+    onClick={onClick}
     {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-    className={`inline-flex items-center justify-center gap-2 rounded border-2 font-semibold tracking-wide transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dourado ${
+    className={`inline-flex items-center justify-center gap-2 rounded-md border-2 font-semibold tracking-wide transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dourado ${
       size === 'lg' ? 'px-7 py-4 text-base' : 'px-5 py-3 text-sm'
     } ${variants[variant]} ${className}`}
   >

@@ -34,6 +34,13 @@ if (html.indexOf('id="root"') > html.indexOf('<script>\n')) {
   throw new Error('O script ficou antes do #root — a página abriria em branco.');
 }
 
+// Trava: o arquivo único não pode depender de nenhum arquivo solto ao lado dele.
+// Se aparecer "./bundle.jpg" (ou similar), alguma imagem local ficou de fora e quebraria.
+const loose = html.match(/\.\/bundle\.[a-z0-9]+/gi);
+if (loose) {
+  throw new Error(`O HTML ainda aponta para arquivo externo: ${[...new Set(loose)].join(', ')}`);
+}
+
 const out = resolve('site-clique-e-abre.html');
 writeFileSync(out, html, 'utf8');
 console.log(`OK: ${out} (${(html.length / 1024).toFixed(0)} KB)`);

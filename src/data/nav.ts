@@ -3,12 +3,10 @@ export interface NavItem {
   href: string;
 }
 
+/** Menu simples. O botão "Pedir orçamento" já aparece ao lado, então não repete aqui. */
 export const navItems: readonly NavItem[] = [
-  { label: 'Início', href: '#inicio' },
-  { label: 'Quem somos', href: '#experiencia' },
-  { label: 'Serviço', href: '#servico' },
+  { label: 'Serviços', href: '#servicos' },
   { label: 'Cardápio', href: '#cardapio' },
-  { label: 'Eventos', href: '#servicos' },
   { label: 'Galeria', href: '#galeria' },
-  { label: 'Contato', href: '#orcamento' },
+  { label: 'Dúvidas', href: '#faq' },
 ] as const;

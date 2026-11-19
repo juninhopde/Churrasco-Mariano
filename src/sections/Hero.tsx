@@ -1,44 +1,53 @@
 import { ChevronDown } from 'lucide-react';
 import { businessConfig } from '../config/business';
-import { buildWhatsAppUrl } from '../utils/whatsapp';
 import { CTAButton } from '../components/CTAButton';
-import { WhatsAppIcon } from '../components/WhatsAppIcon';
+import { Embers } from '../components/Embers';
+import { EventTagline } from '../components/EventTagline';
 import { photos, url } from '../data/images';
+import { goToQuote } from '../utils/scroll';
 
 /**
  * Para usar a SUA foto de fundo:
  * 1. salve em src/assets/hero/hero.jpg
  * 2. import heroImg from '../assets/hero/hero.jpg';
- * 3. troque `fundo` abaixo por `heroImg`
+ * 3. troque `fundo` e `fundoSrcSet` abaixo por `heroImg`
  */
-const fundo = url(photos.heroChurrasqueiro, 1920);
-
-const trustPills = [
-  '5 anos de experiência',
-  'Churrasqueiro ou buffet completo',
-  'Ingredientes selecionados no dia',
-  'Bragança Paulista e região',
-];
+const fundo = url(photos.heroChurrasqueiro, 1280);
+// Três tamanhos: o celular baixa a menor, não a de 1920px.
+const fundoSrcSet = [800, 1280, 1920].map((w) => `${url(photos.heroChurrasqueiro, w)} ${w}w`).join(', ');
 
 export const Hero = () => (
   <section
     id="inicio"
-    className="relative flex min-h-[92svh] items-center overflow-hidden bg-carvao"
+    className="relative flex min-h-[85svh] items-center overflow-hidden bg-carvao"
   >
     {/* Foto de fundo + camadas escuras: sem elas o texto branco não tem contraste */}
     <img
       src={fundo}
+      srcSet={fundoSrcSet}
+      sizes="100vw"
       alt=""
       aria-hidden="true"
-      fetchPriority="high"
       className="absolute inset-0 h-full w-full object-cover motion-safe:animate-hero-zoom"
     />
-    <div aria-hidden="true" className="absolute inset-0 bg-carvao/72 motion-safe:animate-fire-flicker" />
+    {/* Celular: sombra uniforme (o texto ocupa a largura toda). Desktop: sombra leve no geral e mais
+        forte só do lado do texto, para a chama da direita ficar viva e alegre sem perder leitura. */}
+    <div aria-hidden="true" className="absolute inset-0 bg-carvao/72 motion-safe:animate-fire-flicker sm:bg-carvao/25" />
+    <div
+      aria-hidden="true"
+      className="absolute inset-0 hidden bg-gradient-to-r from-carvao/80 via-carvao/45 to-transparent sm:block"
+    />
     <div
       aria-hidden="true"
       className="absolute inset-0 bg-[radial-gradient(120%_85%_at_78%_12%,rgba(197,139,58,0.28)_0%,rgba(168,50,32,0.18)_38%,transparent_72%)] motion-safe:animate-fire-glow"
     />
-    <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-carvao to-transparent" />
+    {/* Brilho de brasa na base, "respirando": liga o topo à faixa vermelha logo abaixo */}
+    <div
+      aria-hidden="true"
+      className="glow-breathe absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-fogo/80 via-brasa/25 to-transparent"
+    />
+    {/* Faíscas de brasa subindo — por cima das camadas escuras, por baixo do texto */}
+    <Embers />
 
     <div className="relative mx-auto w-full max-w-content px-5 pb-20 pt-32 sm:px-8 sm:pt-36">
       <p className="mb-5 text-sm tracking-[0.22em] text-dourado">{businessConfig.slogan}</p>
@@ -47,43 +56,35 @@ export const Hero = () => (
         Churrasqueiro profissional para o seu evento
       </h1>
 
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-creme/80 motion-safe:animate-fade-up">
-        Churrasco preparado na hora, no seu espaço. Só o churrasqueiro ou o buffet completo — você escolhe e ninguém fica preso na churrasqueira.
+      <EventTagline />
+
+      <p className="mt-4 max-w-2xl text-lg leading-relaxed text-creme/80 motion-safe:animate-fade-up">
+        Churrasco preparado na hora, no seu espaço. Escolha só o churrasqueiro ou o buffet completo, e ninguém fica preso na churrasqueira.
       </p>
 
       <div className="mt-9 flex flex-col gap-3 sm:flex-row">
         <CTAButton
-          href={buildWhatsAppUrl('Olá! Gostaria de um orçamento de churrasco.')}
-          external
-          variant="zap"
+          href="#orcamento"
+          onClick={(e) => {
+            e.preventDefault();
+            goToQuote();
+          }}
+          variant="fogo"
           size="lg"
+          className="btn-shine btn-pulse"
         >
-          <WhatsAppIcon />
           Pedir orçamento
         </CTAButton>
-        <CTAButton href="#servico" variant="outlineLight" size="lg">
-          Qual serviço escolher?
+        <CTAButton href="#servicos" variant="outlineLight" size="lg">
+          Ver os serviços
         </CTAButton>
       </div>
-
-      <p className="mt-4 text-sm text-creme/70">
-        Bragança Paulista e região · Resposta no mesmo dia · {businessConfig.phoneDisplay}
-      </p>
-
-      <ul className="mt-12 grid gap-x-8 gap-y-3 border-t border-creme/15 pt-7 sm:grid-cols-2 lg:grid-cols-4">
-        {trustPills.map((pill) => (
-          <li key={pill} className="flex items-start gap-2 text-sm text-creme/80">
-            <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-dourado" />
-            {pill}
-          </li>
-        ))}
-      </ul>
     </div>
 
     <a
-      href="#como-funciona"
-      aria-label="Ver como funciona"
-      className="absolute bottom-5 left-1/2 -translate-x-1/2 text-creme/50 transition-colors hover:text-dourado"
+      href="#servicos"
+      aria-label="Ver os serviços"
+      className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 text-creme/50 transition-colors hover:text-dourado sm:block"
     >
       <ChevronDown className="h-7 w-7" aria-hidden="true" />
     </a>

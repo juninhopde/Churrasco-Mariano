@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { X } from 'lucide-react';
 import { businessConfig } from '../config/business';
-import { buildWhatsAppUrl } from '../utils/whatsapp';
+import { buildWhatsAppUrl, DEFAULT_MESSAGE } from '../utils/whatsapp';
+import { goToQuote } from '../utils/scroll';
 import { useLockBodyScroll } from '../hooks/useLockBodyScroll';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import type { NavItem } from '../data/nav';
@@ -34,7 +35,7 @@ export const MobileMenu = ({ open, onClose, items }: MobileMenuProps) => {
           type="button"
           onClick={onClose}
           aria-label="Fechar menu"
-          className="rounded p-2 text-creme transition-colors hover:text-dourado focus-visible:outline focus-visible:outline-2 focus-visible:outline-dourado"
+          className="flex h-11 w-11 items-center justify-center rounded text-creme transition-colors hover:text-dourado focus-visible:outline focus-visible:outline-2 focus-visible:outline-dourado"
         >
           <X className="h-6 w-6" aria-hidden="true" />
         </button>
@@ -56,13 +57,25 @@ export const MobileMenu = ({ open, onClose, items }: MobileMenuProps) => {
         </ul>
 
         <a
-          href={buildWhatsAppUrl('Olá! Gostaria de um orçamento de churrasco.')}
+          href="#orcamento"
+          onClick={(e) => {
+            e.preventDefault();
+            onClose();
+            // espera o menu fechar (e o scroll do body ser liberado) antes de rolar
+            window.setTimeout(goToQuote, 0);
+          }}
+          className="mt-8 flex items-center justify-center gap-2 rounded-md bg-fogo px-5 py-4 font-semibold text-white transition-colors hover:bg-[#8c2818]"
+        >
+          Pedir orçamento
+        </a>
+        <a
+          href={buildWhatsAppUrl(DEFAULT_MESSAGE)}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 flex items-center justify-center gap-2 rounded bg-zap px-5 py-4 font-semibold text-white transition-colors hover:bg-zap-dark"
+          className="mt-3 flex items-center justify-center gap-2 rounded-md border-2 border-zap px-5 py-3.5 font-semibold text-zap transition-colors hover:bg-zap hover:text-white"
         >
           <WhatsAppIcon />
-          Pedir orçamento
+          Chamar no WhatsApp
         </a>
         <p className="mt-4 text-center text-sm text-creme/60">{businessConfig.phoneDisplay}</p>
       </nav>

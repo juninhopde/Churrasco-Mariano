@@ -47,8 +47,8 @@
 
     <!--
       ===== DADOS ESTRUTURADOS (Schema.org) =====
-      Preencha telephone, address e priceRange com os dados reais.
-      NÃO adicione aggregateRating sem avaliações reais — o Google penaliza.
+      Confira telephone e address. Não há priceRange de propósito: só adicione quando existir
+      uma tabela de preços real. NÃO adicione aggregateRating sem avaliações reais — o Google penaliza.
     -->
     <script type="application/ld+json">
       {
@@ -60,12 +60,7 @@
         "servesCuisine": "Churrasco",
         "telephone": "+5511973829765",
         "url": "https://SEU-USUARIO.github.io/mariano-churrasco/",
-        "priceRange": "$$",
-        "areaServed": {
-          "@type": "GeoCircle",
-          "description": "Bragança Paulista e região",
-          "geoMidpoint": { "@type": "GeoCoordinates", "addressCountry": "BR" }
-        },
+        "areaServed": "Bragança Paulista e região",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Bragança Paulista",

@@ -25,12 +25,9 @@ export const faqItems: FaqItem[] = [
       'Sim. O churrasqueiro vai acompanhado de auxiliares, em número definido pelo tamanho do evento. A equipe serve à mesa e entrega a área da brasa limpa no final.',
   },
   {
-    question: 'Vocês fornecem bebidas?',
-    answer: 'Não. As bebidas ficam por conta do cliente. Assim você escolhe exatamente o que os convidados preferem e no volume certo.',
-  },
-  {
-    question: 'Vocês fornecem pratos e talheres?',
-    answer: 'Sim, com descartáveis de boa qualidade inclusos. Louça e taças sob consulta.',
+    question: 'Vocês fornecem bebidas, pratos e talheres?',
+    answer:
+      'Bebidas não: ficam por conta do cliente, para você escolher o que os convidados preferem e no volume certo. Pratos e talheres descartáveis de boa qualidade estão inclusos; louça e taças sob consulta.',
   },
   {
     question: 'Com quanto tempo devo reservar?',
@@ -49,6 +46,6 @@ export const faqItems: FaqItem[] = [
   {
     question: 'Como funciona o orçamento?',
     answer:
-      'Você manda data, cidade e número de convidados pelo WhatsApp ou preenche o formulário. Devolvemos por escrito, com deslocamento e hora extra já explicados. A data é reservada com sinal e contrato.',
+      'Você informa data, cidade e número de convidados no formulário e envia pelo WhatsApp, com a mensagem já pronta. Devolvemos a proposta por escrito, com deslocamento e hora extra já explicados. A data é reservada com sinal e contrato.',
   },
 ];

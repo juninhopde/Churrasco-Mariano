@@ -40,9 +40,12 @@ export const AppImage = ({
         sizes: '(max-width: 640px) 100vw, 50vw',
       })}
       alt={photo.alt}
+      style={photo.position ? { objectPosition: photo.position } : undefined}
       loading={priority ? 'eager' : 'lazy'}
       decoding={priority ? 'sync' : 'async'}
-      fetchPriority={priority ? 'high' : 'auto'}
+      // React 18 não conhece `fetchPriority` (só a partir do 19) e avisa no console.
+      // O atributo em minúsculas funciona nos navegadores e não gera aviso.
+      {...({ fetchpriority: priority ? 'high' : 'auto' } as Record<string, string>)}
       className={`${aspect} w-full object-cover ${className}`}
     />
   );

@@ -11,7 +11,8 @@ export const businessConfig = {
   whatsapp: '5511973829765',
   phoneDisplay: '(11) 97382-9765',
 
-  email: 'contato@marianochurrasco.com.br', // EDITAR
+  /** Vazio = o rodapé não mostra e-mail. Preencha só com uma caixa que exista e seja lida. */
+  email: '',
   city: 'Bragança Paulista',
   state: 'SP',
 
@@ -24,6 +25,3 @@ export const businessConfig = {
   /** URL final do site — usada no canonical e no sitemap. */
   siteUrl: 'https://SEU-USUARIO.github.io/mariano-churrasco/',
 } as const;
-
-export const whatsappLink = (message: string): string =>
-  `https://wa.me/${businessConfig.whatsapp}?text=${encodeURIComponent(message)}`;

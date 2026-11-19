@@ -1,46 +1,45 @@
 import { Header } from './sections/Header';
 import { Hero } from './sections/Hero';
-import { TrustBar } from './sections/TrustBar';
-import { ServiceSelector } from './sections/ServiceSelector';
-import { HowItWorks } from './sections/HowItWorks';
-import { Experience } from './sections/Experience';
+import { Ticker } from './components/Ticker';
 import { Services } from './sections/Services';
-import { MenuSection } from './sections/MenuSection';
-import { CTABand } from './sections/CTABand';
-import { Gallery } from './sections/Gallery';
 import { QuoteForm } from './sections/QuoteForm';
+import { MenuSection } from './sections/MenuSection';
+import { Gallery } from './sections/Gallery';
 import { FAQ } from './sections/FAQ';
 import { Footer } from './sections/Footer';
-import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { FloatingCTA } from './components/FloatingCTA';
+import { useQuoteDraft } from './hooks/useQuoteDraft';
 
-const App = () => (
-  <>
-    <a
-      href="#inicio"
-      className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded focus:bg-carvao focus:px-4 focus:py-3 focus:text-creme"
-    >
-      Ir para o conteúdo
-    </a>
+const App = () => {
+  // Um único estado de orçamento: os cartões de serviço, o cardápio e o formulário
+  // leem e escrevem o mesmo lugar, então nada precisa ser escolhido duas vezes.
+  const quote = useQuoteDraft();
 
-    <Header />
+  return (
+    <>
+      <a
+        href="#inicio"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded focus:bg-carvao focus:px-4 focus:py-3 focus:text-creme"
+      >
+        Ir para o conteúdo
+      </a>
 
-    <main>
-      <Hero />
-      <TrustBar />
-      <ServiceSelector />
-      <HowItWorks />
-      <MenuSection />
-      <CTABand />
-      <Experience />
-      <Services />
-      <Gallery />
-      <QuoteForm />
-      <FAQ />
-    </main>
+      <Header />
 
-    <Footer />
-    <FloatingWhatsApp />
-  </>
-);
+      <main>
+        <Hero />
+        <Ticker />
+        <Services quote={quote} />
+        <QuoteForm quote={quote} />
+        <MenuSection quote={quote} />
+        <Gallery />
+        <FAQ />
+      </main>
+
+      <Footer />
+      <FloatingCTA />
+    </>
+  );
+};
 
 export default App;

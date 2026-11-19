@@ -14,6 +14,11 @@
  */
 
 import marianoAvatar from '../assets/hero/mariano-avatar.jpg';
+import eventoBuffetImg from '../assets/gallery/evento-01-buffet.jpg';
+import eventoLinguicaFacaImg from '../assets/gallery/evento-02-linguica-faca.jpg';
+import eventoEquipeTabuaImg from '../assets/gallery/evento-03-equipe-tabua.jpg';
+import eventoChurrasqueiraImg from '../assets/gallery/evento-04-churrasqueira.jpg';
+import eventoSaladasImg from '../assets/gallery/evento-05-saladas.jpg';
 
 export interface Photo {
   /** ID da foto no CDN do Unsplash (vazio se for arquivo local) */
@@ -23,6 +28,8 @@ export interface Photo {
   credit: string;
   /** Caminho local importado — quando presente, ignora o CDN do Unsplash */
   localSrc?: string;
+  /** Ponto de enquadramento do recorte (CSS object-position), ex.: '50% 25%' para manter o rosto. */
+  position?: string;
 }
 
 export const url = (photo: Photo, width: number): string =>
@@ -100,10 +107,43 @@ export const photos = {
     alt: 'Mariano — Churrasco do Mariano, Mestre do Fogo',
     credit: 'Próprio',
     localSrc: marianoAvatar,
+    position: '50% 22%',
   },
   buffetMontado: {
     id: 'photo-1504674900247-0877df9cc836',
     alt: 'Mesa com pratos de carne e acompanhamentos servidos',
     credit: 'Lily Banse / Unsplash',
+  },
+
+  // ── Fotos PRÓPRIAS do último evento (arquivos em src/assets/gallery/) ──────────────
+  eventoBuffet: {
+    id: '',
+    alt: 'Equipe servindo o buffet em cubas aquecidas, com arroz e farofa',
+    credit: 'Próprio',
+    localSrc: eventoBuffetImg,
+  },
+  eventoLinguicaFaca: {
+    id: '',
+    alt: 'Linguiça sendo fatiada na tábua, com a faca gravada com o nome Mariano',
+    credit: 'Próprio',
+    localSrc: eventoLinguicaFacaImg,
+  },
+  eventoEquipeTabua: {
+    id: '',
+    alt: 'Equipe de luvas fatiando linguiça na tábua, ao lado das saladas',
+    credit: 'Próprio',
+    localSrc: eventoEquipeTabuaImg,
+  },
+  eventoChurrasqueira: {
+    id: '',
+    alt: 'Linguiças, frango e bacon assando na churrasqueira de tijolos',
+    credit: 'Próprio',
+    localSrc: eventoChurrasqueiraImg,
+  },
+  eventoSaladas: {
+    id: '',
+    alt: 'Travessas de salada com alface, tomate, pepino e cebola no balcão do buffet',
+    credit: 'Próprio',
+    localSrc: eventoSaladasImg,
   },
 } satisfies Record<string, Photo>;

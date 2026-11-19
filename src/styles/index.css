@@ -41,4 +41,163 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  /* Texto com degradê dourado → laranja brasa (palavra que troca no hero) */
+  .text-festa {
+    background-image: linear-gradient(90deg, #c58b3a 0%, #f28c28 60%, #ffd27a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* "Pop" de alegria: quem aparece ou é escolhido dá uma saltadinha curta */
+  .animate-pop {
+    animation: pop 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  }
+}
+
+/* ───────── Efeitos de alegria ─────────
+   Só transform/opacity (leve) e tudo desligado em prefers-reduced-motion (bloco no fim). */
+@layer components {
+  /* Faíscas de brasa subindo — componente Embers. As variáveis vêm de cada <span>. */
+  .ember {
+    position: absolute;
+    bottom: -14px;
+    left: var(--x);
+    width: var(--s);
+    height: var(--s);
+    border-radius: 9999px;
+    background: radial-gradient(circle, #fff3d1 0%, #ffd27a 28%, #f28c28 55%, rgba(168, 50, 32, 0) 75%);
+    box-shadow: 0 0 calc(var(--s) * 3) rgba(255, 160, 50, 0.8);
+    opacity: 0;
+    animation: ember-rise var(--d) ease-in var(--delay) infinite;
+  }
+
+  /* Brilho de brasa que "respira" (base do topo) */
+  .glow-breathe {
+    animation: glow-breathe 3.2s ease-in-out infinite;
+  }
+
+  /* Anel que pulsa em volta do botão principal */
+  .btn-pulse {
+    animation: btn-pulse 2.4s ease-out infinite;
+  }
+
+  /* Faixa em movimento (componente Ticker): duas cópias lado a lado, desliza metade e recomeça */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 34s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* Brilho que cruza o botão de tempos em tempos */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
+    transform: translateX(-120%);
+    animation: btn-shine 2.8s ease-in-out 1s infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes ember-rise {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.95;
+  }
+  60% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(var(--drift), -75vh, 0) scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes btn-shine {
+  0%,
+  55% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes glow-breathe {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes btn-pulse {
+  0% {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(242, 140, 40, 0.65);
+  }
+  70%,
+  100% {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 0 18px rgba(242, 140, 40, 0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.85);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ember,
+  .btn-shine::after,
+  .marquee-dup {
+    display: none;
+  }
+  .animate-pop,
+  .glow-breathe,
+  .btn-pulse {
+    animation: none;
+  }
+  /* Faixa parada: os destaques viram uma linha centralizada que quebra de linha se precisar */
+  .marquee-track {
+    animation: none;
+    width: auto;
+    justify-content: center;
+  }
+  .marquee-track ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
