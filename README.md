@@ -185,14 +185,14 @@ git init
 git add .
 git commit -m "site: primeira versão"
 git branch -M main
-git remote add origin https://github.com/SEU-USUARIO/mariano-churrasco.git
+git remote add origin https://github.com/juninhopde/Churrasco-Mariano.git
 git push -u origin main
 ```
 
 Depois, em **Settings → Pages → Source**, escolha **GitHub Actions**. O workflow
 `.github/workflows/deploy.yml` compila e publica automaticamente a cada push.
 O `base: './'` no `vite.config.ts` faz o site funcionar tanto em subpasta
-(`usuario.github.io/mariano-churrasco/`) quanto em domínio próprio.
+(`juninhopde.github.io/Churrasco-Mariano/`, o endereço atual do site) quanto em domínio próprio.
 
 `.gitignore` já bloqueia `node_modules`, `dist` e `.env`. Nenhuma credencial no repositório.
 
@@ -223,7 +223,7 @@ TypeScript strict sem erros. Sem `console.log`, sem TODO, sem função fictícia
 | Fotos em alta resolução + hero e carne bovina próprios | `src/data/images.ts`, `src/assets/` | As 5 do evento já estão no site, mas com ~490 px; o hero e Carnes bovinas ainda são de banco de imagem |
 | E-mail (opcional) | `src/config/business.ts` | Está vazio (`email: ''`), então o rodapé não mostra e-mail. O endereço antigo era um exemplo não confirmado. Preencha só com uma caixa que exista e seja lida — o rodapé passa a exibi-lo sozinho |
 | Instagram, CNPJ | `src/config/business.ts` | CNPJ visível é dos sinais de confiança mais fortes do nicho |
-| URL final | `index.html` (canonical, OG, Schema), `public/robots.txt`, `public/sitemap.xml`, `business.ts` | Trocar `SEU-USUARIO` pela URL real |
+| URL do site (feito) | `index.html` (canonical, OG, Schema), `public/robots.txt`, `public/sitemap.xml`, `business.ts` | Já é `https://juninhopde.github.io/Churrasco-Mariano/`. Se um dia usar domínio próprio, troque nesses 4 lugares |
 | Imagem de compartilhamento | `public/og.jpg`, 1200×630 | É o que aparece quando o link é enviado no WhatsApp |
 | Depoimentos de clientes | seção removida | Quando tiver depoimentos reais, vale reativar — é o sinal de confiança que mais pesa |
 

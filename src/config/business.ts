@@ -23,5 +23,5 @@ export const businessConfig = {
   cnpj: '',
 
   /** URL final do site — usada no canonical e no sitemap. */
-  siteUrl: 'https://SEU-USUARIO.github.io/mariano-churrasco/',
+  siteUrl: 'https://juninhopde.github.io/Churrasco-Mariano/',
 } as const;

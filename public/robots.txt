@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://SEU-USUARIO.github.io/mariano-churrasco/sitemap.xml
+Sitemap: https://juninhopde.github.io/Churrasco-Mariano/sitemap.xml
